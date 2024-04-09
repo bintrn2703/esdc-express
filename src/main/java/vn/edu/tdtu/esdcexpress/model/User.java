@@ -1,19 +1,17 @@
 package vn.edu.tdtu.esdcexpress.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @NoArgsConstructor @Getter @Setter
 public class User {
     @Id
     private String username;
-
+    @Column
     private String password;
     private String name;
     private String bank_name;
