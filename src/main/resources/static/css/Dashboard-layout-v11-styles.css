@@ -3,4 +3,83 @@
   border: none;
   /*font-weight: bold;*/
 }
+.alert-danger {
+  position: fixed; /* Sử dụng vị trí cố định */
+  top: 20px; /* Đặt thông báo ở góc trên */
+  right: 20px; /* Đặt thông báo ở góc phải */
+  z-index: 9999; /* Đảm bảo thông báo hiển thị trên cùng */
+  /* Thêm các thuộc tính khác nếu cần */
+}
+
+/* Hiệu ứng xuất hiện */
+.alert-fade-in {
+  animation: fadeIn ease 3s; /* Thay đổi thời gian chuyển đổi ở đây */
+  -webkit-animation: fadeIn ease 3s;
+  -moz-animation: fadeIn ease 3s;
+  -o-animation: fadeIn ease 3s;
+  -ms-animation: fadeIn ease 3s;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 1;} /* Bắt đầu từ độ mờ đầy đủ */
+  100% {opacity: 1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+
+/* Hiệu ứng mờ dần */
+.alert-fade-out {
+  animation: fadeOut ease 3s forwards; /* Thay đổi thời gian chuyển đổi ở đây */
+  -webkit-animation: fadeOut ease 3s forwards;
+  -moz-animation: fadeOut ease 3s forwards;
+  -o-animation: fadeOut ease 3s forwards;
+  -ms-animation: fadeOut ease 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0; display: none;} /* Thêm display: none; ở đây */
+}
+
+@-moz-keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0; display: none;}
+}
+
+@-webkit-keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0; display: none;}
+}
+
+@-o-keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0; display: none;}
+}
+
+@-ms-keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0; display: none;}
+}
+
+
+
 

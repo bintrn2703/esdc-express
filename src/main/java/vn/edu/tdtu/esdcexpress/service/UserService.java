@@ -1,5 +1,5 @@
 package vn.edu.tdtu.esdcexpress.service;
 
 public interface UserService {
-    public boolean loginWithUsernameAndPasswordInDB(String username, String password) throws Exception;
+    public boolean loginWithUsernameAndPassword(String username, String password);
 }

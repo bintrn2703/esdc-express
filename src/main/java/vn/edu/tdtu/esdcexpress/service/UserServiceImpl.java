@@ -9,8 +9,11 @@ public class UserServiceImpl implements UserService{
     @Autowired
     UserRepository userRepository;
     @Override
-    public boolean loginWithUsernameAndPasswordInDB(String username, String password) throws Exception {
-        User newUser = userRepository.findById(username).orElseThrow(() -> new Exception("User not found"));
+    public boolean loginWithUsernameAndPassword(String username, String password){
+        User newUser = userRepository.findById(username).orElse(null);
+        if(newUser == null) {
+            return false;
+        }
         return newUser.getPassword().equals(password);
     }
 }
