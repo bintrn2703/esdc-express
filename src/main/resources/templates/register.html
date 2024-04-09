@@ -24,27 +24,27 @@
                     <div class="text-center">
                         <h4 class="text-dark mb-4">Create an Account!</h4>
                     </div><!-- Start: Register Form -->
-                    <form class="user">
+                    <form class="user" th:action="@{'/register'}" th:method="post" th:object="${user}">
                         <!-- Start: Username -->
-                        <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Username" required=""></div><!-- End: Username -->
+                        <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Username" required="" th:field="*{username}"></div><!-- End: Username -->
                         <!-- Start: Email -->
-                        <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" placeholder="Email" required=""></div><!-- End: Email -->
+                        <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" placeholder="Email" required="" th:field="*{email}"></div><!-- End: Email -->
                         <!-- Start: Password -->
                         <div class="row mb-3">
-                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" required=""></div>
-                            <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="verifyPassword" placeholder="Repeat Password" required=""></div>
+                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" required="" th:field="*{password}"></div>
+                            <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="verifyPassword" placeholder="Repeat Password" required="" th:field="*{confirmPassword}"></div>
                         </div><!-- End: Password -->
                         <!-- Start: Names -->
                         <div class="row mb-3">
-                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" placeholder="First Name" required=""></div>
-                            <div class="col-sm-6"><input class="form-control form-control-user" type="text" placeholder="Last Name" required=""></div>
+                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" placeholder="First Name" required="" th:field="*{firstName}"></div>
+                            <div class="col-sm-6"><input class="form-control form-control-user" type="text" placeholder="Last Name" required="" th:field="*{lastName}"></div>
                         </div><!-- End: Names -->
                         <!-- Start: bankName -->
-                        <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Bank Name" required=""></div><!-- End: bankName -->
+                        <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Bank Name" required="" th:field="*{bank_name}"></div><!-- End: bankName -->
                         <!-- Start: bankAccountHolder -->
-                        <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Bank Account Holder" required=""></div><!-- End: bankAccountHolder -->
+                        <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Bank Account Holder" required="" th:field="*{bank_account_holder}"></div><!-- End: bankAccountHolder -->
                         <!-- Start: bankAccountNumber -->
-                        <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Bank Account Number" required=""></div><!-- End: bankAccountNumber -->
+                        <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Bank Account Number" required="" th:field="*{bank_account_number}"></div><!-- End: bankAccountNumber -->
                         <!-- Start: Email Error Message -->
                         <div class="row mb-3">
                             <p id="emailErrorMsg" class="text-danger" style="display:none;">Paragraph</p>
@@ -53,9 +53,9 @@
                         <hr>
                     </form><!-- End: Register Form -->
                     <!-- Start: Forgot Password -->
-                    <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div><!-- End: Forgot Password -->
+                    <div class="text-center"><a class="small" href="#">Forgot Password?</a></div><!-- End: Forgot Password -->
                     <!-- Start: Login -->
-                    <div class="text-center"><a class="small" href="login.html">Already have an account? Login!</a></div><!-- End: Login -->
+                    <div class="text-center"><a class="small" th:href="@{'/login'}">Already have an account? Login!</a></div><!-- End: Login -->
                 </div>
             </div>
         </div><script>

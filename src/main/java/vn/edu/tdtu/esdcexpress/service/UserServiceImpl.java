@@ -16,4 +16,14 @@ public class UserServiceImpl implements UserService{
         }
         return newUser.getPassword().equals(password);
     }
+
+    @Override
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        return userRepository.findById(username).orElse(null);
+    }
 }
