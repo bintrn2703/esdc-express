@@ -6,20 +6,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>ESDC-Express</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
-    <link rel="stylesheet" href="../static/css/Dashboard-layout-v11-DashBoard-light-boostrap.css">
-    <link rel="stylesheet" href="../static/css/Dashboard-layout-v11-styles.css">
-    <link rel="stylesheet" href="../static/css/Dashboard-layout-v11.css">
-    <link rel="stylesheet" href="../static/css/Navbar-Centered-Brand-icons.css">
-    <link rel="stylesheet" href="../static/css/Search-Input-Responsive-with-Icon.css">
-    <link rel="stylesheet" href="../static/css/Search-Input-responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
+    <link rel="stylesheet" href="assets/css/Dashboard-layout-v11-DashBoard-light-boostrap.css">
+    <link rel="stylesheet" href="assets/css/Dashboard-layout-v11-styles.css">
+    <link rel="stylesheet" href="assets/css/Dashboard-layout-v11.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Centered-Brand-icons.css">
+    <link rel="stylesheet" href="assets/css/Search-Input-Responsive-with-Icon.css">
+    <link rel="stylesheet" href="assets/css/Search-Input-responsive.css">
 </head>
 
 <body>
+    <!-- Start: Dashboard layout v1.1 -->
+    <div class="wrapper">
+        <!-- Start: left-column -->
+        <div class="sidebar" data-color="purple" data-image="" style="background: transparent;backdrop-filter: opacity(1) blur(0px) brightness(105%);">
+            <div class="sidebar-wrapper" style="background: white;border-color: transparent;box-shadow: 0px 0px 5px 0px var(--bs-secondary-color);">
+                <!-- Start: Logo -->
+                <div class="logo" style="border-width: 0px;background: var(--bs-secondary-color);text-align: center;height: 70px;"><a href="index.html" style="color: white;font-size: 33px;">ESDC Express</a></div><!-- End: Logo -->
+                <!-- Start: add-order-btn -->
+                <div class="d-flex justify-content-center" style="position: relative;border-radius: 0px;border-width: 0px;border-color: var(--bs-body-bg);padding-top: 10px;padding-bottom: 10px;"><a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" style="position: static;margin: 0px;display: flex;transform: translate(0px) translateX(0px) translateY(0px) translateZ(0px);background: transparent;color: var(--bs-secondary-color);text-align: center;border: 2px solid var(--bs-secondary-color);" href="create-order.html">+ CREATE NEW ORDER</a></div><!-- End: add-order-btn -->
+                <ul class="list-group">
+                    <li class="list-group-item" style="border-radius: 0px;color: var(--bs-body-color);"><a href="order.html" style="color: var(--bs-body-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-box2" style="padding-right: 0px;margin-right: 10px;">
+                                <path d="M2.95.4a1 1 0 0 1 .8-.4h8.5a1 1 0 0 1 .8.4l2.85 3.8a.5.5 0 0 1 .1.3V15a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4.5a.5.5 0 0 1 .1-.3L2.95.4ZM7.5 1H3.75L1.5 4h6zm1 0v3h6l-2.25-3zM15 5H1v10h14z"></path>
+                            </svg>Order Tracking</a></li>
+                    <li class="list-group-item" style="background: transparent;"><a href="finance.html" style="color: var(--bs-body-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-cash-coin" style="margin-right: 10px;">
+                                <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
+                                <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"></path>
+                                <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"></path>
+                                <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"></path>
+                            </svg>Financial Report</a></li>
+                    <li class="list-group-item active d-flex justify-content-between" style="background: var(--bs-secondary-color);"><a href="return-management.html" style="color: var(--bs-body-bg);margin-right: 0px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-repeat" style="margin-right: 10px;">
+                                <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
+                                <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"></path>
+                            </svg>Return management</a><span class="badge bg-primary" style="margin-right: 0px;transform: rotate(0deg);">NEW</span></li>
+                    <li class="list-group-item"><a href="address-list.html" style="color: var(--bs-body-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-card-list" style="margin-right: 10px;">
+                                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"></path>
+                                <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"></path>
+                            </svg>Address List</a></li>
+                    <li class="list-group-item"><a href="#" style="color: var(--bs-body-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-box-arrow-left" style="margin-right: 10px;">
+                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"></path>
+                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"></path>
+                            </svg>Logout</a></li>
+                </ul>
+            </div>
+        </div><!-- End: left-column -->
+        <!-- Start: right-column -->
+        <div class="main-panel">
+            <nav class="navbar navbar-expand-md navbar-light" style="box-shadow: 6px 0px 5px;height: 70px;position: static;">
+                <div class="container-fluid">
+                    <div><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><input type="search" placeholder="Order ID" style="padding-right: 2px;margin-right: 5px;"><button class="btn btn-primary btn-sm" type="button" style="height: 30px;background: var(--bs-secondary-color);">Search</button></div>
+                    <div class="collapse navbar-collapse" id="navcol-1" style="width: 30%;">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person-circle" style="margin-right: 10px;margin-bottom: 4px;">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
+                                    </svg>Account </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="content" style="color: var(--bs-body-color);background: var(--bs-secondary-color);">
+                <div class="container-fluid" style="background: white;border-radius: 0px;padding-right: 12px;height: 100%;">
+                    <h3 style="margin-top: 0px;padding-top: 14px;">Return Management</h3><!-- Start: Toolbar -->
+                    <div class="d-flex justify-content-between">
+                        <!-- Start: search-box -->
+                        <div class="d-flex">
+                            <p style="margin-bottom: 0px;height: 0px;font-size: 16px;margin-top: 7px;">From&nbsp;</p><input type="date" style="height: 28px;margin-top: 5px;">
+                            <p style="margin-bottom: 0px;height: 0px;margin-top: 5px;">&nbsp;-&nbsp;</p><input type="date" style="height: 28px;margin-top: 5px;"><button class="btn btn-primary" type="button" style="margin-right: 10px;margin-left: 10px;background: var(--bs-secondary-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
+                                </svg></button>
+                        </div><!-- End: search-box -->
+                        <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="background: green;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-filetype-csv" style="margin-right: 8px;">
+                                    <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM3.517 14.841a1.13 1.13 0 0 0 .401.823c.13.108.289.192.478.252.19.061.411.091.665.091.338 0 .624-.053.859-.158.236-.105.416-.252.539-.44.125-.189.187-.408.187-.656 0-.224-.045-.41-.134-.56a1.001 1.001 0 0 0-.375-.357 2.027 2.027 0 0 0-.566-.21l-.621-.144a.97.97 0 0 1-.404-.176.37.37 0 0 1-.144-.299c0-.156.062-.284.185-.384.125-.101.296-.152.512-.152.143 0 .266.023.37.068a.624.624 0 0 1 .246.181.56.56 0 0 1 .12.258h.75a1.092 1.092 0 0 0-.2-.566 1.21 1.21 0 0 0-.5-.41 1.813 1.813 0 0 0-.78-.152c-.293 0-.551.05-.776.15-.225.099-.4.24-.527.421-.127.182-.19.395-.19.639 0 .201.04.376.122.524.082.149.2.27.352.367.152.095.332.167.539.213l.618.144c.207.049.361.113.463.193a.387.387 0 0 1 .152.326.505.505 0 0 1-.085.29.559.559 0 0 1-.255.193c-.111.047-.249.07-.413.07-.117 0-.223-.013-.32-.04a.838.838 0 0 1-.248-.115.578.578 0 0 1-.255-.384h-.765ZM.806 13.693c0-.248.034-.46.102-.633a.868.868 0 0 1 .302-.399.814.814 0 0 1 .475-.137c.15 0 .283.032.398.097a.7.7 0 0 1 .272.26.85.85 0 0 1 .12.381h.765v-.072a1.33 1.33 0 0 0-.466-.964 1.441 1.441 0 0 0-.489-.272 1.838 1.838 0 0 0-.606-.097c-.356 0-.66.074-.911.223-.25.148-.44.359-.572.632-.13.274-.196.6-.196.979v.498c0 .379.064.704.193.976.131.271.322.48.572.626.25.145.554.217.914.217.293 0 .554-.055.785-.164.23-.11.414-.26.55-.454a1.27 1.27 0 0 0 .226-.674v-.076h-.764a.799.799 0 0 1-.118.363.7.7 0 0 1-.272.25.874.874 0 0 1-.401.087.845.845 0 0 1-.478-.132.833.833 0 0 1-.299-.392 1.699 1.699 0 0 1-.102-.627v-.495Zm8.239 2.238h-.953l-1.338-3.999h.917l.896 3.138h.038l.888-3.138h.879l-1.327 4Z"></path>
+                                </svg>Export to CSV</button></div>
+                    </div><!-- End: Toolbar -->
+                    <div class="table-responsive" style="margin-top: 10px;margin-bottom: 10px;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Return ID</th>
+                                    <th>Order ID</th>
+                                    <th>Created At</th>
+                                    <th>AI Summary</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>984702332</td>
+                                    <td><a href="order-id.html">645242</a></td>
+                                    <td>10-04-2023</td>
+                                    <td style="height: auto;"><a href="order-id-returned.html"><span class="badge rounded-pill bg-success" style="background: var(--bs-teal);padding-right: 7.8px;padding-left: 7.8px;height: auto;">Same as original</span></a></td>
+                                    <td>
+                                        <div class="btn-group" role="group"><button class="btn btn-primary" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check">
+                                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path>
+                                                </svg></button><button class="btn btn-danger" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-x">
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"></path>
+                                                </svg></button></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex">
+                        <p style="margin-right: 16px;font-weight: bold;">Total: 0</p>
+                        <div>
+                            <p style="margin-bottom: 0px;">Total Shipping Fee: 0 (VND)</p>
+                            <p style="margin-bottom: 0px;">Total COD Amount: 0 (VND)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End: right-column -->
+    </div><!-- End: Dashboard layout v1.1 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../static/js/bs-init.js"></script>
-    <script src="../static/js/Dashboard-layout-v11-DashBoard-light-boostrap.js"></script>
-    <script src="../static/js/Contact-Form-v2-Modal--Full-with-Google-Map-scripts.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/Dashboard-layout-v11-DashBoard-light-boostrap.js"></script>
+    <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map-scripts.js"></script>
 </body>
 
 </html>
