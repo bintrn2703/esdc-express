@@ -130,7 +130,8 @@
                                         <tbody>
                                             <tr th:each="order : ${orders}">
                                                 <td><input name="checkbox" type="checkbox"></td>
-                                                <td th:text="${order.id}"><a href="#"></a></td>
+<!--                                                <td th:text="${order.id}"><a href="#"></a></td>-->
+                                                <td><a th:text="${order.id}" href="#"></a></td>
                                                 <td th:text="${order.user.getUsername()}"></td>
                                                 <td th:text="${order.status}"></td>
                                                 <td th:text="${order.pickup_name}"></td>
