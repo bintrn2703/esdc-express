@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
+<html data-bs-theme="light" lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -23,11 +23,11 @@
         <div class="sidebar" data-color="purple" data-image="" style="background: transparent;backdrop-filter: opacity(1) blur(0px) brightness(105%);">
             <div class="sidebar-wrapper" style="background: white;border-color: transparent;box-shadow: 0px 0px 5px 0px var(--bs-secondary-color);">
                 <!-- Start: Logo -->
-                <div class="logo" style="border-width: 0px;background: var(--bs-secondary-color);text-align: center;height: 70px;"><a href="index.html" style="color: white;font-size: 33px;">ESDC Express</a></div><!-- End: Logo -->
+                <div class="logo" style="border-width: 0px;background: var(--bs-secondary-color);text-align: center;height: 70px;"><a th:href="@{'/'}" style="color: white;font-size: 33px;">ESDC Express</a></div><!-- End: Logo -->
                 <!-- Start: add-order-btn -->
                 <div class="d-flex justify-content-center" style="position: relative;border-radius: 0px;border-width: 0px;border-color: var(--bs-body-bg);padding-top: 10px;padding-bottom: 10px;"><a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" style="position: static;margin: 0px;display: flex;transform: translate(0px) translateX(0px) translateY(0px) translateZ(0px);background: transparent;color: var(--bs-secondary-color);text-align: center;border: 2px solid var(--bs-secondary-color);" href="create-order.html">+ CREATE NEW ORDER</a></div><!-- End: add-order-btn -->
                 <ul class="list-group">
-                    <li class="list-group-item active" style="border-radius: 0px;background: var(--bs-secondary-color);color: var(--bs-body-color);"><a href="order.html" style="color: var(--bs-body-bg);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-box2" style="padding-right: 0px;margin-right: 10px;">
+                    <li class="list-group-item active" style="border-radius: 0px;background: var(--bs-secondary-color);color: var(--bs-body-color);"><a th:href="@{'/order'}" style="color: var(--bs-body-bg);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-box2" style="padding-right: 0px;margin-right: 10px;">
                                 <path d="M2.95.4a1 1 0 0 1 .8-.4h8.5a1 1 0 0 1 .8.4l2.85 3.8a.5.5 0 0 1 .1.3V15a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4.5a.5.5 0 0 1 .1-.3L2.95.4ZM7.5 1H3.75L1.5 4h6zm1 0v3h6l-2.25-3zM15 5H1v10h14z"></path>
                             </svg>Order Tracking</a></li>
                     <li class="list-group-item"><a href="finance.html" style="color: var(--bs-body-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-cash-coin" style="margin-right: 10px;">
@@ -128,36 +128,36 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td><input type="checkbox"></td>
-                                                <td><a href="order-id.html">1</a></td>
-                                                <td>User1</td>
-                                                <td>Delivered</td>
-                                                <td>Mr. A</td>
-                                                <td>17836783</td>
-                                                <td>Cell 1</td>
-                                                <td>Mr. B</td>
-                                                <td>9898774</td>
-                                                <td>Cell 2</td>
-                                                <td>Knife</td>
-                                                <td>1</td>
-                                                <td></td>
-                                                <td>Receiver Pay</td>
-                                                <td>Yes</td>
-                                                <td>0</td>
-                                                <td>50000</td>
-                                                <td></td>
-                                                <td>Normal</td>
-                                                <td>10000</td>
-                                                <td>05-04-2024</td>
-                                                <td>05-04-2024</td>
-                                                <td>05-04-2024</td>
+                                            <tr th:each="order : ${orders}">
+                                                <td><input name="checkbox" type="checkbox"></td>
+                                                <td th:text="${order.id}"><a href="#"></a></td>
+                                                <td th:text="${order.user.getUsername()}"></td>
+                                                <td th:text="${order.status}"></td>
+                                                <td th:text="${order.pickup_name}"></td>
+                                                <td th:text="${order.pickup_phone}"></td>
+                                                <td th:text="${order.pickup_address}"></td>
+                                                <td th:text="${order.deliver_name}"></td>
+                                                <td th:text="${order.deliver_phone}"></td>
+                                                <td th:text="${order.deliver_address}"></td>
+                                                <td th:text="${order.parcel_name}"></td>
+                                                <td th:text="${order.item_quantity}"></td>
+                                                <td th:text="${order.delivery_instruction}"></td>
+                                                <td th:text="${order.shipping_fee_payment}"></td>
+                                                <td th:text="${order.allow_mutual_check}"></td>
+                                                <td th:text="${order.cod}"></td>
+                                                <td th:text="${order.parcel_value}"></td>
+                                                <td th:text="${order.collect_type}"></td>
+                                                <td th:text="${order.shipping_service}"></td>
+                                                <td th:text="${order.shipping_fee}"></td>
+                                                <td th:text="${order.create_at}"></td>
+                                                <td th:text="${order.pickup_at}"></td>
+                                                <td th:text="${order.delivered_at}"></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div>
-                                    <p>Total: 1</p>
+                                    <p>Total: <span th:text="${orderSize}"></span></p>
                                 </div>
                             </div><!-- End: #tab-all -->
                             <!-- Start: #tab-pending-pickup -->

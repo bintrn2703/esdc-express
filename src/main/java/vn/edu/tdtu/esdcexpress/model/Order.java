@@ -6,11 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @NoArgsConstructor @Getter @Setter
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private Long id;
 
     @ManyToOne
@@ -20,9 +21,9 @@ public class Order {
     private String pickup_phone;
     private String pickup_name;
     private String pickup_address;
-    private String delivery_phone;
-    private String delivery_name;
-    private String delivery_address;
+    private String deliver_phone;
+    private String deliver_name;
+    private String deliver_address;
     private String delivery_instruction;
     private String parcel_name;
     private float parcel_weight;
@@ -35,22 +36,23 @@ public class Order {
     private int shipping_service;
     private int shipping_fee_payment;
     private float shipping_fee;
-    private String created_at;
+    private String create_at;
     private String pickup_at;
-    private String delivery_at;
+    private String delivered_at;
     private String status;
 
-
-    public Order (String pickup_phone, String pickup_name, String pickup_address, String delivery_phone, String delivery_name, String delivery_address, String delivery_instruction, String parcel_name, float parcel_weight, float parcel_value, int item_quantity, int allow_mutual_check, int cod, int collect_type, int shipping_service, int shipping_fee_payment, float shipping_fee, String created_at, String pickup_at, String delivery_at, String status, String parcel_dimension) {
+    public Order(User user, String pickup_phone, String pickup_name, String pickup_address, String deliver_phone, String deliver_name, String deliver_address, String deliver_instruction, String parcel_name, float parcel_weight, String parcel_dimension, float parcel_value, int item_quantity, int allow_mutual_check, int cod, int collect_type, int shipping_service, int shipping_fee_payment, float shipping_fee, String create_at, String pickup_at, String delivered_at, String status) {
+        this.user = user;
         this.pickup_phone = pickup_phone;
         this.pickup_name = pickup_name;
         this.pickup_address = pickup_address;
-        this.delivery_phone = delivery_phone;
-        this.delivery_name = delivery_name;
-        this.delivery_address = delivery_address;
-        this.delivery_instruction = delivery_instruction;
+        this.deliver_phone = deliver_phone;
+        this.deliver_name = deliver_name;
+        this.deliver_address = deliver_address;
+        this.delivery_instruction = deliver_instruction;
         this.parcel_name = parcel_name;
         this.parcel_weight = parcel_weight;
+        this.parcel_dimension = parcel_dimension;
         this.parcel_value = parcel_value;
         this.item_quantity = item_quantity;
         this.allow_mutual_check = allow_mutual_check;
@@ -59,10 +61,10 @@ public class Order {
         this.shipping_service = shipping_service;
         this.shipping_fee_payment = shipping_fee_payment;
         this.shipping_fee = shipping_fee;
-        this.created_at = created_at;
+        this.create_at = create_at;
         this.pickup_at = pickup_at;
-        this.delivery_at = delivery_at;
+        this.delivered_at = delivered_at;
         this.status = status;
-        this.parcel_dimension = parcel_dimension;
     }
+
 }
