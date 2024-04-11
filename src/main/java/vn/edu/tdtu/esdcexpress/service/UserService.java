@@ -7,5 +7,6 @@ public interface UserService {
     public boolean loginWithUsernameAndPassword(String username, String password);
     public User save(User user);
     public User findByUsername(String username);
+    public User getUserByName(String name);
 
 }

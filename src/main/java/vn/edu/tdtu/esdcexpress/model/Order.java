@@ -30,10 +30,10 @@ public class Order {
     private String parcel_dimension;
     private float parcel_value;
     private int item_quantity;
-    private int allow_mutual_check;
-    private int cod;
-    private int collect_type;
-    private int shipping_service;
+    private String allow_mutual_check;
+    private String cod;
+    private String collect_type;
+    private String shipping_service;
     private int shipping_fee_payment;
     private float shipping_fee;
     private String create_at;
@@ -41,7 +41,7 @@ public class Order {
     private String delivered_at;
     private String status;
 
-    public Order(User user, String pickup_phone, String pickup_name, String pickup_address, String deliver_phone, String deliver_name, String deliver_address, String deliver_instruction, String parcel_name, float parcel_weight, String parcel_dimension, float parcel_value, int item_quantity, int allow_mutual_check, int cod, int collect_type, int shipping_service, int shipping_fee_payment, float shipping_fee, String create_at, String pickup_at, String delivered_at, String status) {
+    public Order(User user, String pickup_phone, String pickup_name, String pickup_address, String deliver_phone, String deliver_name, String deliver_address, String deliver_instruction, String parcel_name, float parcel_weight, String parcel_dimension, float parcel_value, int item_quantity, String allow_mutual_check, String cod, String collect_type, String shipping_service, int shipping_fee_payment, float shipping_fee, String create_at, String pickup_at, String delivered_at, String status) {
         this.user = user;
         this.pickup_phone = pickup_phone;
         this.pickup_name = pickup_name;

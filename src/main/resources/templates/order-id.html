@@ -68,67 +68,65 @@
             </nav>
             <div class="content" style="color: var(--bs-body-color);background: var(--bs-secondary-color);">
                 <div class="container-fluid" style="background: white;border-radius: 0px;padding-right: 12px;height: 100%;">
-                    <h3 style="margin-top: 0px;padding-top: 14px;">Order ID: 1</h3>
+                    <h3 style="margin-top: 0px;padding-top: 14px;">Order ID: <span th:text="${orderDetail.id}"></span> </h3>
                     <div class="d-flex">
                         <!-- Start: left-column -->
                         <div style="width: 50%;border-right: 1px solid var(--bs-secondary-bg) ;">
                             <h4>Pickup Address</h4>
-                            <p>Mr. A, 09999999</p>
-                            <p>255 Boundary Street, Miami</p>
+                            <p th:text="${orderDetail.pickup_address}"></p>
                             <h4>Repcident Address</h4>
-                            <p>Mr. B, 07777777</p>
-                            <p>298 Mountain Street, San Jose</p>
+                            <p th:text="${orderDetail.deliver_address}"></p>
                             <h4>Parcel Info</h4>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Item name:&nbsp;</p>
-                                <p>2x Amee CDs</p>
+                                <p th:text="${orderDetail.parcel_name}"></p>
                             </div>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Item Quantity:&nbsp;</p>
-                                <p>1</p>
+                                <p th:text="${orderDetail.item_quantity}"></p>
                             </div>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Parcel Weight (kg):&nbsp;</p>
-                                <p>0.9</p>
+                                <p th:text="${orderDetail.parcel_weight}"></p>
                             </div>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Parcel Dimension:&nbsp;</p>
-                                <p>0cm * 0cm * 0cm</p>
+                                <p th:text="${orderDetail.parcel_dimension}"></p>
                             </div>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Delivery Instruction:&nbsp;</p>
-                                <p></p>
+                                <p th:text="${orderDetail.delivery_instruction}"></p>
                             </div>
                             <h4>Shipping Method</h4>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Collect Type:&nbsp;</p>
-                                <p>Drop-off Service</p>
+                                <p th:text="${orderDetail.collect_type}"></p>
                             </div>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Pickup Time:&nbsp;</p>
-                                <p>02/04/2023 11:59:59</p>
+                                <p th:text="${orderDetail.pickup_at}"></p>
                             </div>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Shippment Fee Payment:&nbsp;</p>
-                                <p>Sender Pay</p>
+                                <p th:text="${orderDetail.shipping_fee_payment}"></p>
                             </div>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Allow Mutual Check:&nbsp;</p>
-                                <p>Yes</p>
+                                <p th:text="${orderDetail.allow_mutual_check}"></p>
                             </div>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">COD:&nbsp;</p>
-                                <p>No</p>
+                                <p th:text="${orderDetail.cod}"></p>
                             </div>
                             <h4>Shipping Fee</h4>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Shipping Service:&nbsp;</p>
-                                <p>Standard Service</p>
+                                <p th:text="${orderDetail.shipping_service}"></p>
                             </div>
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Total Estimate Shipping Fee:&nbsp;</p>
-                                <p>0 VND</p>
-                            </div><a href="return-order-submit.html">Need to return? Click here to return your parcel</a>
+                                <p th:text="${orderDetail.shipping_fee}"></p>
+                            </div><a href="#">Need to return? Click here to return your parcel</a>
                         </div><!-- End: left-column -->
                         <!-- Start: right-column -->
                         <div style="width: 50%;padding-left: 12px;">

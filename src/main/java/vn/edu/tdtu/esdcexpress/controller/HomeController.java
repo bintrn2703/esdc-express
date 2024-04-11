@@ -18,6 +18,7 @@ public class HomeController {
     UserService userService;
     @GetMapping("/")
     public String index() {
+
         return "index";
     }
 
@@ -31,6 +32,7 @@ public class HomeController {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         if(userService.loginWithUsernameAndPassword(username, password)) {
+            request.getSession().setAttribute("accountName", userService.findByUsername(username).getName());
             return "redirect:/";
         }
         model.addAttribute("loginFailed", true);
