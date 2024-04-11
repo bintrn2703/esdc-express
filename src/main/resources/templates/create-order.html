@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>ESDC-Express</title>
+    <title>Create New Order</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
@@ -23,11 +23,11 @@
         <div class="sidebar" data-color="purple" data-image="" style="background: transparent;backdrop-filter: opacity(1) blur(0px) brightness(105%);">
             <div class="sidebar-wrapper" style="background: white;border-color: transparent;box-shadow: 0px 0px 5px 0px var(--bs-secondary-color);">
                 <!-- Start: Logo -->
-                <div class="logo" style="border-width: 0px;background: var(--bs-secondary-color);text-align: center;height: 70px;"><a href="index.html" style="color: white;font-size: 33px;">ESDC Express</a></div><!-- End: Logo -->
+                <div class="logo" style="border-width: 0px;background: var(--bs-secondary-color);text-align: center;height: 70px;"><a th:href="@{'/'}" style="color: white;font-size: 33px;">ESDC Express</a></div><!-- End: Logo -->
                 <!-- Start: add-order-btn -->
-                <div class="d-flex justify-content-center" style="position: relative;border-radius: 0px;border-width: 0px;border-color: var(--bs-body-bg);padding-top: 10px;padding-bottom: 10px;"><a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" style="position: static;margin: 0px;display: flex;transform: translate(0px) translateX(0px) translateY(0px) translateZ(0px);background: transparent;color: var(--bs-secondary-color);text-align: center;border: 2px solid var(--bs-secondary-color);" href="create-order.html">+ CREATE NEW ORDER</a></div><!-- End: add-order-btn -->
+                <div class="d-flex justify-content-center" style="position: relative;border-radius: 0px;border-width: 0px;border-color: var(--bs-body-bg);padding-top: 10px;padding-bottom: 10px;"><a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" style="position: static;margin: 0px;display: flex;transform: translate(0px) translateX(0px) translateY(0px) translateZ(0px);background: transparent;color: var(--bs-secondary-color);text-align: center;border: 2px solid var(--bs-secondary-color);" th:href="@{'/create-order'}">+ CREATE NEW ORDER</a></div><!-- End: add-order-btn -->
                 <ul class="list-group">
-                    <li class="list-group-item" style="border-radius: 0px;background: var(--bs-list-group-active-color);color: var(--bs-body-color);"><a href="order.html" style="color: var(--bs-body-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-box2" style="padding-right: 0px;margin-right: 10px;">
+                    <li class="list-group-item" style="border-radius: 0px;background: var(--bs-list-group-active-color);color: var(--bs-body-color);"><a th:href="@{'/order'}" style="color: var(--bs-body-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-box2" style="padding-right: 0px;margin-right: 10px;">
                                 <path d="M2.95.4a1 1 0 0 1 .8-.4h8.5a1 1 0 0 1 .8.4l2.85 3.8a.5.5 0 0 1 .1.3V15a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4.5a.5.5 0 0 1 .1-.3L2.95.4ZM7.5 1H3.75L1.5 4h6zm1 0v3h6l-2.25-3zM15 5H1v10h14z"></path>
                             </svg>Order Tracking</a></li>
                     <li class="list-group-item"><a href="finance.html" style="color: var(--bs-body-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-cash-coin" style="margin-right: 10px;">
@@ -61,7 +61,7 @@
                             <li class="nav-item"><a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person-circle" style="margin-right: 10px;margin-bottom: 4px;">
                                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
                                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
-                                    </svg>Account </a></li>
+                                    </svg><span th:text="${session.accountName}"></span></a></li>
                         </ul>
                     </div>
                 </div>

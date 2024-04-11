@@ -37,4 +37,9 @@ public class OrderController {
         model.addAttribute("orderDetail", order);
         return "order-id";
     }
+
+    @GetMapping("/create-order")
+    public String createNewOrder(Model model, HttpSession session) {
+        return "create-order";
+    }
 }
