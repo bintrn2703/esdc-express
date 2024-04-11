@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/Navbar-Centered-Brand-icons.css">
     <link rel="stylesheet" href="css/Search-Input-Responsive-with-Icon.css">
     <link rel="stylesheet" href="css/Search-Input-responsive.css">
+    <link rel="stylesheet" th:href="@{/css/Dashboard-layout-v11-styles.css}" />
+    <link rel="stylesheet" th:href="@{/css/Dashboard-layout-v11.css}" />
+    <link rel="stylesheet" th:href="@{/css/Dashboard-layout-v11-DashBoard-light-boostrap.css}" />
 </head>
 
 <body>
@@ -25,7 +28,7 @@
                 <!-- Start: Logo -->
                 <div class="logo" style="border-width: 0px;background: var(--bs-secondary-color);text-align: center;height: 70px;"><a th:href="@{'/'}" style="color: white;font-size: 33px;">ESDC Express</a></div><!-- End: Logo -->
                 <!-- Start: add-order-btn -->
-                <div class="d-flex justify-content-center" style="position: relative;border-radius: 0px;border-width: 0px;border-color: var(--bs-body-bg);padding-top: 10px;padding-bottom: 10px;"><a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" style="position: static;margin: 0px;display: flex;transform: translate(0px) translateX(0px) translateY(0px) translateZ(0px);background: transparent;color: var(--bs-secondary-color);text-align: center;border: 2px solid var(--bs-secondary-color);" href="create-order.html">+ CREATE NEW ORDER</a></div><!-- End: add-order-btn -->
+                <div class="d-flex justify-content-center" style="position: relative;border-radius: 0px;border-width: 0px;border-color: var(--bs-body-bg);padding-top: 10px;padding-bottom: 10px;"><a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" style="position: static;margin: 0px;display: flex;transform: translate(0px) translateX(0px) translateY(0px) translateZ(0px);background: transparent;color: var(--bs-secondary-color);text-align: center;border: 2px solid var(--bs-secondary-color);" th:href="@{'/create-order'}">+ CREATE NEW ORDER</a></div><!-- End: add-order-btn -->
                 <ul class="list-group">
                     <li class="list-group-item active" style="border-radius: 0px;background: var(--bs-secondary-color);color: var(--bs-body-color);"><a th:href="@{'/order'}" style="color: var(--bs-body-bg);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-box2" style="padding-right: 0px;margin-right: 10px;">
                                 <path d="M2.95.4a1 1 0 0 1 .8-.4h8.5a1 1 0 0 1 .8.4l2.85 3.8a.5.5 0 0 1 .1.3V15a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4.5a.5.5 0 0 1 .1-.3L2.95.4ZM7.5 1H3.75L1.5 4h6zm1 0v3h6l-2.25-3zM15 5H1v10h14z"></path>
