@@ -4,10 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import vn.edu.tdtu.esdcexpress.model.CreateOrderDto;
 import vn.edu.tdtu.esdcexpress.model.Order;
 import vn.edu.tdtu.esdcexpress.model.User;
@@ -77,6 +74,16 @@ public class OrderController {
         order.setStatus("In transit");
         order.setUser(orderDto.getUser());
         orderService.save(order);
+        return "redirect:/order";
+    }
+
+    @PostMapping("/order/cancel")
+    public String cancelOrder(@RequestBody List<Long> ids) {
+        for(Long id : ids) {
+            Order order = orderService.findById(id);
+            order.setStatus("Cancelled");
+            orderService.save(order);
+        }
         return "redirect:/order";
     }
 }
