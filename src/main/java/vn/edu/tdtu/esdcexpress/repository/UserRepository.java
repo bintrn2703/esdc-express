@@ -5,4 +5,5 @@ import vn.edu.tdtu.esdcexpress.model.User;
 
 public interface UserRepository extends JpaRepository<User, String> {
     public User findByName(String name);
+    public User findByUsername(String username);
 }
