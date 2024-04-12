@@ -79,4 +79,11 @@ public class OrderController {
         orderService.save(order);
         return "redirect:/order";
     }
+
+    @GetMapping("/edit-order/{id}")
+    public String editOrder(@PathVariable(value="id") Long id, Model model) {
+        Order orderDetail = orderService.findById(id);
+        model.addAttribute("orderDetail", orderDetail);
+        return "edit-order";
+    }
 }
