@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 document.addEventListener('DOMContentLoaded', function() {
     // Handle No button click
     document.querySelector('#cancel-order-modal .btn-primary').addEventListener('click', function() {
-        document.querySelector('#cancel-order-modal').style.display = 'none';
+        var modal = document.querySelector('#cancel-order-modal');
+        var bootstrapModal = bootstrap.Modal.getInstance(modal);
+        bootstrapModal.hide();
     });
 
     // Handle Yes button click

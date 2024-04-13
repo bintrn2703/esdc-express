@@ -90,7 +90,39 @@ public class OrderController {
     @GetMapping("/edit-order/{id}")
     public String editOrder(@PathVariable(value="id") Long id, Model model) {
         Order orderDetail = orderService.findById(id);
-        model.addAttribute("orderDetail", orderDetail);
+        model.addAttribute("orderDetailNew", orderDetail);
+        System.out.println(orderDetail.getDeliver_name());
+        System.out.println(orderDetail.getDeliver_address());
+        System.out.println(orderDetail.getPickup_address());
+        model.addAttribute("updateOrder", new CreateOrderDto());
         return "edit-order";
+    }
+
+    @PostMapping("/edit-order/{id}")
+    public String editOrder(@PathVariable(value="id") Long id, @ModelAttribute("updateOrder") CreateOrderDto orderDto) {
+        Order order = orderService.findById(id);
+        order.setDeliver_name(orderDto.getDeliver_name());
+        order.setDeliver_address(orderDto.getDeliver_address());
+        order.setDeliver_phone(orderDto.getDeliver_phone());
+        order.setPickup_name(orderDto.getPickup_name());
+        order.setPickup_address(orderDto.getPickup_address());
+        order.setPickup_phone(orderDto.getPickup_phone());
+        order.setParcel_name(orderDto.getParcel_name());
+        order.setParcel_weight(orderDto.getParcel_weight());
+        order.setParcel_dimension(orderDto.getParcel_dimension());
+        order.setParcel_value(orderDto.getParcel_value());
+        order.setItem_quantity(orderDto.getItem_quantity());
+        order.setAllow_mutual_check(orderDto.getAllow_mutual_check());
+        order.setCod(orderDto.getCod());
+        order.setCollect_type(orderDto.getCollect_type());
+        order.setShipping_service(orderDto.getShipping_service());
+        order.setShipping_fee_payment(orderDto.getShipping_fee_payment());
+        order.setShipping_fee(orderDto.getShipping_fee());
+        order.setPickup_at(orderDto.getPickup_at());
+        order.setCreate_at(LocalDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh")).toString());
+        order.setDelivered_at(LocalDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh")).toString());
+        order.setStatus("In transit");
+        orderService.save(order);
+        return "redirect:/order";
     }
 }
