@@ -143,18 +143,4 @@ public class OrderController {
         orderService.save(order);
         return "redirect:/order";
     }
-
-    @GetMapping("/finance")
-    public String finance(Model model, HttpSession session) {
-        String accountName = (String) session.getAttribute("accountName");
-        User user = userService.getUserByName(accountName);
-        if(user != null) {
-            List<Finance> finances = (List<Finance>) financeService.getFinancesByUsername(user);
-//            List<Order> orders = (List<Order>) orderService.getOrdersByUsername(user);
-            model.addAttribute("finances", finances);
-//            model.addAttribute("orders", orders);
-            model.addAttribute("financeSize", finances.size());
-        }
-        return "finance";
-    }
 }
