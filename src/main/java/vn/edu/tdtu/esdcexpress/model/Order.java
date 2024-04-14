@@ -19,7 +19,6 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
     private String pickup_phone;
     private String pickup_name;
     private String pickup_address;

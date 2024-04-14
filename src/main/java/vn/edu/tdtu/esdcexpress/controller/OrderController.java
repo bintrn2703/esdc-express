@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.tdtu.esdcexpress.model.CreateOrderDto;
+import vn.edu.tdtu.esdcexpress.model.Finance;
 import vn.edu.tdtu.esdcexpress.model.Order;
 import vn.edu.tdtu.esdcexpress.model.User;
+import vn.edu.tdtu.esdcexpress.service.FinanceService;
 import vn.edu.tdtu.esdcexpress.service.OrderService;
 import vn.edu.tdtu.esdcexpress.service.UserService;
 
@@ -21,6 +23,8 @@ public class OrderController {
     UserService userService;
     @Autowired
     OrderService orderService;
+    @Autowired
+    FinanceService financeService;
     @GetMapping("/order")
     public String order(Model model, HttpSession session) {
         String accountName = (String) session.getAttribute("accountName");
@@ -49,7 +53,9 @@ public class OrderController {
     @PostMapping("/create-order")
     public String createNewOrder(@ModelAttribute("order") CreateOrderDto orderDto, Model model, HttpSession session) {
         String name = (String) session.getAttribute("accountName");
+
         orderDto.setUser(userService.getUserByName(name));
+
         Order order = new Order();
         order.setDeliver_name(orderDto.getDeliver_name());
         order.setDeliver_address(orderDto.getDeliver_address());
@@ -74,6 +80,18 @@ public class OrderController {
         order.setStatus("In transit");
         order.setUser(orderDto.getUser());
         orderService.save(order);
+
+        Finance finance = new Finance();
+        finance.setOrder(order);
+        finance.setUser(orderDto.getUser());
+        finance.setCreate_at(orderDto.getCreate_at());
+        finance.setWeight(orderDto.getParcel_weight());
+        finance.setDimension(orderDto.getParcel_dimension());
+        finance.setShipping_fee(orderDto.getShipping_fee());
+        finance.setParcel_value(orderDto.getParcel_value());
+        finance.setCod(orderDto.getCod());
+        financeService.save(finance);
+
         return "redirect:/order";
     }
 
@@ -124,5 +142,19 @@ public class OrderController {
         order.setStatus("In transit");
         orderService.save(order);
         return "redirect:/order";
+    }
+
+    @GetMapping("/finance")
+    public String finance(Model model, HttpSession session) {
+        String accountName = (String) session.getAttribute("accountName");
+        User user = userService.getUserByName(accountName);
+        if(user != null) {
+            List<Finance> finances = (List<Finance>) financeService.getFinancesByUsername(user);
+//            List<Order> orders = (List<Order>) orderService.getOrdersByUsername(user);
+            model.addAttribute("finances", finances);
+//            model.addAttribute("orders", orders);
+            model.addAttribute("financeSize", finances.size());
+        }
+        return "finance";
     }
 }

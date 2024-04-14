@@ -16,8 +16,19 @@ public class Finance {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
+    private double sender_pay;
+    private double receiver_pay;
+    private String create_at;
+    private double weight;
+    private String dimension;
+    private double shipping_fee;
+    private double parcel_value;
+    private String cod;
+
+    public User getUser() {
+        return this.user;
+    }
 }
