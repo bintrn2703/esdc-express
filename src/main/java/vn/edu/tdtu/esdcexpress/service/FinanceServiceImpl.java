@@ -27,6 +27,16 @@ public class FinanceServiceImpl implements FinanceService{
     }
 
     @Override
+    public Double getTotalAmount() {
+        return financeRepository.getTotalAmount();
+    }
+
+    @Override
+    public Double getToTalParcelValue() {
+        return financeRepository.getToTalParcelValue();
+    }
+
+    @Override
     public Finance save(Finance finance) {
         return financeRepository.save(finance);
     }

@@ -28,6 +28,8 @@ public class FinanceController {
             model.addAttribute("finances", finances);
 //            model.addAttribute("orders", orders);
             model.addAttribute("financeSize", finances.size());
+            model.addAttribute("totalShippingFeeAmount", financeService.getTotalAmount());
+            model.addAttribute("totalParcelValue", financeService.getToTalParcelValue());
         }
         return "finance";
     }

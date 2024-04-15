@@ -98,6 +98,7 @@
                                 <div class="input-group" style="margin-bottom: 8px;width: 20%;"><span class="input-group-text"></span><input class="form-control" type="number" placeholder="Item Quantity" name="item-quantity" th:field="*{item_quantity}" required></div>
                                 <div class="input-group" style="width: 30%;height: 38px;"><span class="input-group-text">VND</span><input class="form-control" type="text" placeholder="Parcel Value" name="parcel-value" th:field="*{parcel_value}" required></div>
                             </div>
+                            <input class="form-control" type="file" style="margin-bottom: 8px;" accept="image/*" name="parcel_image" th:field="*{parcel_image}" required>
                             <div>
                                 <div class="input-group" style="margin-bottom: 8px;"><span class="input-group-text"></span><textarea class="form-control" placeholder="Delivery Instruction" name="delivery-instruction" th:field="*{delivery_instruction}"></textarea></div>
                                 <p style="text-align: right;">0/256</p>

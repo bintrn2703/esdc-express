@@ -73,7 +73,7 @@ public class OrderController {
         order.setCollect_type(orderDto.getCollect_type());
         order.setShipping_service(orderDto.getShipping_service());
         order.setShipping_fee_payment(orderDto.getShipping_fee_payment());
-        order.setShipping_fee(orderDto.getShipping_fee());
+        order.setShipping_fee(orderDto.getShipping_fee()*8000);
         order.setPickup_at(orderDto.getPickup_at());
         order.setCreate_at(LocalDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh")).toString());
         order.setDelivered_at(LocalDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh")).toString());
@@ -84,7 +84,7 @@ public class OrderController {
         Finance finance = new Finance();
         finance.setOrder(order);
         finance.setUser(orderDto.getUser());
-        finance.setCreate_at(orderDto.getCreate_at());
+        finance.setCreate_at(LocalDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh")).toString());
         finance.setWeight(orderDto.getParcel_weight());
         finance.setDimension(orderDto.getParcel_dimension());
         finance.setShipping_fee(orderDto.getShipping_fee());

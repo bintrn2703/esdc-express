@@ -27,8 +27,4 @@ public class Finance {
     private double shipping_fee;
     private double parcel_value;
     private String cod;
-
-    public User getUser() {
-        return this.user;
-    }
 }

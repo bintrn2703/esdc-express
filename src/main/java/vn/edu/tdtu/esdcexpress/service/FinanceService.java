@@ -8,5 +8,7 @@ public interface FinanceService {
     public Iterable<Finance> getFinancesByUsername(User user);
 //    public Iterable<Finance> getFinancesByOrderID(Order order);
     public Finance findById(Long id);
+    public Double getTotalAmount();
+    public Double getToTalParcelValue();
     public Finance save(Finance finance);
 }
