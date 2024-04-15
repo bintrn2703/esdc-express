@@ -16,7 +16,8 @@ public class Address {
 
     private String type;
     private String contact_name;
-    private String phone_number;
+    @Column(name = "phone_number")
+    private String phoneNumber;
     private String address;
     private String delivery_instruction;
     private String postal_code;
@@ -28,7 +29,7 @@ public class Address {
     public Address(String type, String contact_name, String phone_number, String address, String delivery_instruction, String postal_code, User user) {
         this.type = type;
         this.contact_name = contact_name;
-        this.phone_number = phone_number;
+        this.phoneNumber = phone_number;
         this.address = address;
         this.delivery_instruction = delivery_instruction;
         this.postal_code = postal_code;

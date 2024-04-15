@@ -135,7 +135,7 @@
                             <div class="d-flex">
                                 <p style="color: var(--bs-secondary-color);">Total Estimate Shipping Fee:&nbsp;</p>
                                 <p th:text="${orderDetail.shipping_fee}"> VND</p>
-                            </div><a href="#">Need to return? Click here to return your parcel</a>
+                            </div><a th:href="@{'/return-order/{id}' (id=${orderDetail.id})}">Need to return? Click here to return your parcel</a>
                         </div><!-- End: left-column -->
                         <!-- Start: right-column -->
                         <div style="width: 50%;padding-left: 12px;">

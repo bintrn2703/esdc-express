@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import vn.edu.tdtu.esdcexpress.model.Address;
 import vn.edu.tdtu.esdcexpress.model.CreateAddressDto;
 import vn.edu.tdtu.esdcexpress.model.User;
@@ -43,7 +40,7 @@ public class AddressController {
         addressDto.setUser(userService.getUserByName(name));
         Address address = new Address();
         address.setContact_name(addressDto.getContact_name());
-        address.setPhone_number(addressDto.getPhone_number());
+        address.setPhoneNumber(addressDto.getPhone_number());
         address.setAddress(addressDto.getAddress());
         address.setType(addressDto.getType());
         address.setPostal_code(addressDto.getPostal_code());
@@ -58,13 +55,13 @@ public class AddressController {
         String contact_name = request.getParameter("contact-name");
         String phone_number = request.getParameter("phone-number");
         String address = request.getParameter("address");
-        String type = request.getParameter("type");
+        String type = request.getParameter("addressType");
         String postal_code = request.getParameter("postal-code");
         String delivery_instruction = request.getParameter("delivery-instruction");
         Long id = Long.parseLong(request.getParameter("id"));
         Address addressObj = addressService.findAddressById(id);
         addressObj.setContact_name(contact_name);
-        addressObj.setPhone_number(phone_number);
+        addressObj.setPhoneNumber(phone_number);
         addressObj.setAddress(address);
         addressObj.setType(type);
         addressObj.setPostal_code(postal_code);
@@ -72,4 +69,14 @@ public class AddressController {
         addressService.save(addressObj);
         return "redirect:/address";
     }
+
+    @PostMapping("/delete-addresses")
+    public String deleteAddresses(@RequestBody List<String> phoneNumbers) {
+        for(String phone : phoneNumbers) {
+            Address address = addressService.getAddressByPhoneNumber(phone);
+            addressService.deleteAddress(address);
+        }
+        return "redirect:/address";
+    }
+
 }

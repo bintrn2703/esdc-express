@@ -78,3 +78,49 @@ $(document).ready(function() {
 
     });
 });
+
+$(document).ready(function() {
+    // Khi click vào nút delete
+    $('.btn-delete').click(function() {
+        // Hiển thị modal xác nhận xóa
+        $('#deleteModal').modal('show');
+    });
+    $('#cancelDelete').click(function() {
+        $('#deleteModal').modal('hide');
+    });
+    // Khi click vào nút "Yes" trong modal
+    $('#confirmDelete').click(function() {
+        // Lấy số điện thoại từ các hàng được chọn
+        var selectedPhones = [];
+        $('input[name="checkbox"]:checked').each(function() {
+            var row = $(this).closest('tr');
+            var phoneNumber = row.find('td:eq(2)').text();
+            selectedPhones.push(phoneNumber);
+        });
+        if(selectedPhones.length === 0) {
+            alert('Vui lòng chọn ít nhất một địa chỉ.');
+            return;
+        }
+        // if(selectedPhones.length === 2) {
+        //     alert('Không thể xóa nhiều hơn 1 địa chỉ cùng lúc.');
+        //     return;
+        // }
+
+        // Gửi yêu cầu xóa đến controller
+        $.ajax({
+            url: '/delete-addresses',
+            type: 'POST',
+            data: JSON.stringify(selectedPhones),
+            contentType: 'application/json; charset=utf-8',
+            success: function(response) {
+                // Xử lý khi xóa thành công
+                $('#deleteModal').modal('hide');
+                location.reload();
+            },
+            error: function(error) {
+                // Xử lý khi có lỗi xảy ra
+                console.error(error);
+            }
+        });
+    });
+});

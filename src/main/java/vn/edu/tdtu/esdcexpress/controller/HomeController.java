@@ -124,9 +124,4 @@ public class HomeController {
         writer.flush();
         writer.close();
     }
-
-    @GetMapping("/homepage")
-    public String homepage() {
-        return "homepage";
-    }
 }
