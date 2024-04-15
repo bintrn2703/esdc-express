@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import vn.edu.tdtu.esdcexpress.model.*;
-import vn.edu.tdtu.esdcexpress.service.AddressService;
-import vn.edu.tdtu.esdcexpress.service.FinanceService;
-import vn.edu.tdtu.esdcexpress.service.OrderService;
-import vn.edu.tdtu.esdcexpress.service.UserService;
+import vn.edu.tdtu.esdcexpress.service.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -27,6 +25,8 @@ public class OrderController {
     FinanceService financeService;
     @Autowired
     AddressService addressService;
+    @Autowired
+    ReturnManagementService returnManagementService;
     @GetMapping("/order")
     public String order(Model model, HttpSession session) {
         String accountName = (String) session.getAttribute("accountName");
@@ -173,5 +173,36 @@ public class OrderController {
         order.setStatus("In transit");
         orderService.save(order);
         return "redirect:/order";
+    }
+
+    @GetMapping("/return-order/{id}")
+    public String returnOrder(@PathVariable(value = "id") Long id, Model model) {
+        Order order = orderService.findById(id);
+        model.addAttribute("orderDetail", order);
+        return "return-submit";
+    }
+
+    @PostMapping("/return-order/{id}")
+    public String returnOrder(@PathVariable(value = "id") Long id ,HttpServletRequest request, @RequestParam("file-input") MultipartFile file, Model model) {
+        try {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            String formattedNow = now.format(formatter);
+            Order order = orderService.findById(id);
+            byte[] imageBytes = file.getBytes();
+            String message = request.getParameter("message");
+            // Lưu imageBytes vào cơ sở dữ liệu
+            ReturnManagement returnManagement = new ReturnManagement();
+            returnManagement.setMessage(message);
+            returnManagement.setImage(imageBytes);
+            returnManagement.setCreated_at(formattedNow);
+            returnManagement.setOrder(order);
+            returnManagementService.save(returnManagement);
+
+        } catch (Exception e) {
+            model.addAttribute("error", "Error while uploading image");
+            return "redirect:/return-order/{id}";
+        }
+        return "redirect:/return-management";
     }
 }
