@@ -77,14 +77,26 @@
                                 <h4 style="margin-top: 15px;">Pickup Address</h4>
                                 <div class="input-group" style="margin-bottom: 8px;"><span class="input-group-text"></span><input class="form-control" type="text" placeholder="Name" name="pickup-name" th:field="*{pickup_name}" required></div>
                                 <div class="input-group" style="margin-bottom: 8px;"><span class="input-group-text"></span><input class="form-control" type="text" placeholder="Phone Number" name="pickup-phone" th:field="*{pickup_phone}" required></div>
-                                <div class="input-group" style="margin-bottom: 8px;"><span class="input-group-text"></span><input class="form-control" type="text" placeholder="Address" name="pickup-address" th:field="*{pickup_address}" required></div>
+                                <div class="input-group" style="margin-bottom: 8px;">
+                                    <span class="input-group-text"></span>
+                                    <select class="form-control" name="pickup-address" th:field="*{pickup_address}" required>
+                                        <option value="" selected disabled hidden>Choose address</option>
+                                        <option th:each="pickupAddress : ${pickupType}" th:value="${pickupAddress.address}" th:text="${pickupAddress.address}"></option>
+                                    </select>
+                                </div>
                             </section><!-- End: pickup-address -->
                             <!-- Start: delivery-address -->
                             <section style="width: 47%;">
                                 <h4 style="margin-top: 15px;">Delivery Address</h4>
                                 <div class="input-group" style="margin-bottom: 8px;"><span class="input-group-text"></span><input class="form-control" type="text" placeholder="Name" name="deliver-name" th:field="*{deliver_name}" required></div>
                                 <div class="input-group" style="margin-bottom: 8px;"><span class="input-group-text"></span><input class="form-control" type="text" placeholder="Phone Number" name="deliver-phone" th:field="*{deliver_phone}" required></div>
-                                <div class="input-group" style="margin-bottom: 8px;"><span class="input-group-text"></span><input class="form-control" type="text" placeholder="Adress" name="deliver-address" th:field="*{deliver_address}" required></div>
+                                <div class="input-group" style="margin-bottom: 8px;">
+                                    <span class="input-group-text"></span>
+                                    <select class="form-control" name="deliver-address" th:field="*{deliver_address}" required>
+                                        <option value="" selected disabled hidden>Choose address</option>
+                                        <option th:each="deliveryAddress : ${deliveryType}" th:value="${deliveryAddress.address}" th:text="${deliveryAddress.address}"></option>
+                                    </select>
+                                </div>
                             </section><!-- End: delivery-address -->
                         </div>
                         <div>
