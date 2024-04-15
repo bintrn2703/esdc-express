@@ -51,3 +51,30 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     });
 });
+
+$(document).ready(function() {
+    // Khi click vào nút edit
+    $('td .btn-primary').click(function() {
+
+
+        // Đặt ID vào trường ẩn trong form
+
+        // Lấy dữ liệu từ hàng chứa nút được click
+        var id = $(this).data('id');
+        var row = $(this).closest('tr');
+        var contactName = row.find('td:eq(1)').text();
+        var phoneNumber = row.find('td:eq(2)').text();
+        var address = row.find('td:eq(3)').text();
+        var deliveryInstruction = row.find('td:eq(4)').text();
+        var postalCode = row.find('td:eq(5)').text();
+
+        // Đặt giá trị cho các trường input trong modal
+        $('#modal-edit-address #edit-id').val(id);
+        $('#modal-edit-address #edit-contact-name').val(contactName);
+        $('#modal-edit-address #edit-phone-number').val(phoneNumber);
+        $('#modal-edit-address #edit-address').val(address);
+        $('#modal-edit-address #edit-delivery-instruction').val(deliveryInstruction);
+        $('#modal-edit-address #edit-postal-code').val(postalCode);
+
+    });
+});

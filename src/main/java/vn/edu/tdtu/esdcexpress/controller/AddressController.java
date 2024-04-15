@@ -1,11 +1,14 @@
 package vn.edu.tdtu.esdcexpress.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import vn.edu.tdtu.esdcexpress.model.Address;
 import vn.edu.tdtu.esdcexpress.model.CreateAddressDto;
@@ -47,6 +50,26 @@ public class AddressController {
         address.setDelivery_instruction(addressDto.getDelivery_instruction());
         address.setUser(addressDto.getUser());
         addressService.save(address);
+        return "redirect:/address";
+    }
+
+    @PostMapping("/edit-address")
+    public String editAddress(HttpServletRequest request, Model model) {
+        String contact_name = request.getParameter("contact-name");
+        String phone_number = request.getParameter("phone-number");
+        String address = request.getParameter("address");
+        String type = request.getParameter("type");
+        String postal_code = request.getParameter("postal-code");
+        String delivery_instruction = request.getParameter("delivery-instruction");
+        Long id = Long.parseLong(request.getParameter("id"));
+        Address addressObj = addressService.findAddressById(id);
+        addressObj.setContact_name(contact_name);
+        addressObj.setPhone_number(phone_number);
+        addressObj.setAddress(address);
+        addressObj.setType(type);
+        addressObj.setPostal_code(postal_code);
+        addressObj.setDelivery_instruction(delivery_instruction);
+        addressService.save(addressObj);
         return "redirect:/address";
     }
 }

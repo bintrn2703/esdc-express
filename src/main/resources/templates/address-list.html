@@ -26,7 +26,7 @@
                 <!-- Start: Logo -->
                 <div class="logo" style="border-width: 0px;background: var(--bs-secondary-color);text-align: center;height: 70px;"><a th:href="@{'/'}" style="color: white;font-size: 33px;">ESDC Express</a></div><!-- End: Logo -->
                 <!-- Start: add-order-btn -->
-                <div class="d-flex justify-content-center" style="position: relative;border-radius: 0px;border-width: 0px;border-color: var(--bs-body-bg);padding-top: 10px;padding-bottom: 10px;"><a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" style="position: static;margin: 0px;display: flex;transform: translate(0px) translateX(0px) translateY(0px) translateZ(0px);background: transparent;color: var(--bs-secondary-color);text-align: center;border: 2px solid var(--bs-secondary-color);" href="create-order.html">+ CREATE NEW ORDER</a></div><!-- End: add-order-btn -->
+                <div class="d-flex justify-content-center" style="position: relative;border-radius: 0px;border-width: 0px;border-color: var(--bs-body-bg);padding-top: 10px;padding-bottom: 10px;"><a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" style="position: static;margin: 0px;display: flex;transform: translate(0px) translateX(0px) translateY(0px) translateZ(0px);background: transparent;color: var(--bs-secondary-color);text-align: center;border: 2px solid var(--bs-secondary-color);" th:href="@{'/create-order'}">+ CREATE NEW ORDER</a></div><!-- End: add-order-btn -->
                 <ul class="list-group">
                     <li class="list-group-item" style="border-radius: 0px;background: transparent;color: var(--bs-body-color);"><a th:href="@{'/order'}" style="color: var(--bs-body-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-box2" style="padding-right: 0px;margin-right: 10px;">
                                 <path d="M2.95.4a1 1 0 0 1 .8-.4h8.5a1 1 0 0 1 .8.4l2.85 3.8a.5.5 0 0 1 .1.3V15a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4.5a.5.5 0 0 1 .1-.3L2.95.4ZM7.5 1H3.75L1.5 4h6zm1 0v3h6l-2.25-3zM15 5H1v10h14z"></path>
@@ -71,10 +71,7 @@
                 <div class="container-fluid" style="background: white;border-radius: 0px;padding-right: 12px;height: 100%;">
                     <h3 style="margin-top: 0px;padding-top: 14px;">Address List</h3><!-- Start: Toolbar -->
                     <div class="d-flex flex-row-reverse"><button class="btn btn-primary" type="button" data-bs-target="#modal-add-new-address" data-bs-toggle="modal">+ New Address</button>
-                        <div class="btn-group" role="group" style="margin-right: 10px;"><button class="btn btn-primary" type="button" style="background: orange;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pencil-square">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"></path>
-                                </svg>&nbsp;Edit</button><button class="btn btn-primary" type="button" style="background: red;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-x-circle">
+                        <div class="btn-group" role="group" style="margin-right: 10px;"><button class="btn btn-primary" type="button" style="background: red;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-x-circle">
                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
                                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"></path>
                                 </svg>&nbsp;Delete</button></div>
@@ -106,6 +103,10 @@
                                                 <td th:text="${address.address}"></td>
                                                 <td th:text="${address.delivery_instruction}"></td>
                                                 <td th:text="${address.postal_code}"></td>
+                                                <td><button th:data-id="${address.id}" class="btn btn-primary" type="button" style="background: orange;" data-bs-target="#modal-edit-address" data-bs-toggle="modal"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pencil-square">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"></path>
+                                                </svg>&nbsp;Edit</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -151,34 +152,90 @@
                     <form method="post" th:action="@{'/address'}" th:object="${addressDto}">
                         <div class="mb-3">
                             <label for="contact-name" class="form-label">Contact Name</label>
-                            <input type="text" class="form-control" id="contact-name" th:field="*{contact_name}">
+                            <input type="text" class="form-control" id="contact-name" th:field="*{contact_name}" required>
                         </div>
                         <div class="mb-3">
                             <label for="phone-number" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="phone-number" th:field="*{phone_number}">
+                            <input type="text" class="form-control" id="phone-number" th:field="*{phone_number}" required>
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" th:field="*{address}">
+                            <input type="text" class="form-control" id="address" th:field="*{address}" required>
                         </div>
                         <div class="mb-3">
                             <label for="delivery-instruction" class="form-label">Delivery Instruction</label>
-                            <input type="text" class="form-control" id="delivery-instruction" th:field="*{delivery_instruction}">
+                            <input type="text" class="form-control" id="delivery-instruction" th:field="*{delivery_instruction}" required>
                         </div>
                         <div class="mb-3">
                             <label for="postal-code" class="form-label">Postal Code</label>
-                            <input type="text" class="form-control" id="postal-code" th:field="*{postal_code}">
+                            <input type="text" class="form-control" id="postal-code" th:field="*{postal_code}" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Address Type</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="addressType" id="sender-address" value="sender" th:field="*{type}">
+                                <input class="form-check-input" type="radio" name="addressType" id="sender-address" value="sender" th:field="*{type}" required>
                                 <label class="form-check-label" for="sender-address">
                                     Sender Address
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="addressType" id="delivery-address" value="delivery" th:field="*{type}">
+                                <label class="form-check-label" for="delivery-address">
+                                    Delivery Address
+                                </label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-edit-address">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Address</h4>
+                    <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" th:action="@{'/edit-address'}">
+                        <input type="hidden" id="edit-id" name="id">
+                        <div class="mb-3">
+                            <label for="contact-name" class="form-label">Contact Name</label>
+                            <input type="text" class="form-control" id="edit-contact-name" name="contact-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone-number" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="edit-phone-number" name="phone-number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="edit-address" name="address" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="delivery-instruction" class="form-label">Delivery Instruction</label>
+                            <input type="text" class="form-control" id="edit-delivery-instruction" name="delivery-instruction" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="postal-code" class="form-label">Postal Code</label>
+                            <input type="text" class="form-control" id="edit-postal-code" name="postal-code" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Address Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="addressType" value="sender" required>
+                                <label class="form-check-label" for="sender-address">
+                                    Sender Address
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="addressType" value="delivery">
                                 <label class="form-check-label" for="delivery-address">
                                     Delivery Address
                                 </label>
