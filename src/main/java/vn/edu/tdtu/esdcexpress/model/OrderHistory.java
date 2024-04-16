@@ -20,4 +20,10 @@ public class OrderHistory {
     private String date;
     private String time;
     private String location;
+    public OrderHistory(Order order, String date, String time, String location) {
+        this.order = order;
+        this.date = date;
+        this.time = time;
+        this.location = location;
+    }
 }

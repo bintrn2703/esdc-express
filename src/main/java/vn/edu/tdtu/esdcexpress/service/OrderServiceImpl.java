@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import vn.edu.tdtu.esdcexpress.model.Order;
 import vn.edu.tdtu.esdcexpress.model.User;
 import vn.edu.tdtu.esdcexpress.repository.OrderRepository;
+
+import java.util.Objects;
+
 @Service
 public class OrderServiceImpl implements OrderService{
     @Autowired
@@ -22,5 +25,15 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Order save(Order order) {
         return orderRepository.save(order);
+    }
+
+    @Override
+    public Order getOrderById(Iterable<Order> orders, Long id) {
+        for (Order order : orders) {
+            if(Objects.equals(order.getId(), id)) {
+                return order;
+            }
+        }
+        return null;
     }
 }

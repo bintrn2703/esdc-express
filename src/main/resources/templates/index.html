@@ -59,7 +59,29 @@
         <div class="main-panel">
             <nav class="navbar navbar-expand-md navbar-light" style="box-shadow: 6px 0px 5px;height: 70px;">
                 <div class="container-fluid">
-                    <div><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><input type="search" placeholder="Order ID" style="padding-right: 2px;margin-right: 5px;"><button class="btn btn-primary btn-sm" id="search-btn" type="button" style="height: 30px;background: var(--bs-secondary-color);">Search</button></div>
+                    <script th:inline="javascript">
+                        /*<![CDATA[*/
+                        var orderNotFound = /*[[${session.orderNotFound}]]*/ 'default';
+                        var invalidOrderId = /*[[${session.invalidOrderId}]]*/ 'default';
+                        if (orderNotFound) {
+                            alert('Không tìm thấy đơn hàng');
+                            clearSessionAttributes();
+                        }
+                        if (invalidOrderId) {
+                            alert('Vui lòng nhập đúng định dạng order id');
+                            clearSessionAttributes();
+                        }
+
+                        function clearSessionAttributes() {
+                            fetch('/clear-session-attributes', { method: 'GET' });
+                        }
+                        /*]]>*/
+                    </script>
+
+                    <form th:action="@{/search}" th:method="get">
+                        <input type="search" name="orderId" placeholder="Order ID" style="padding-right: 2px;margin-right: 5px;">
+                        <button class="btn btn-primary btn-sm" type="submit" style="height: 30px;background: var(--bs-secondary-color);">Search</button>
+                    </form>
                     <div class="collapse navbar-collapse" id="navcol-1" style="width: 30%;">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item"><a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person-circle" style="margin-right: 10px;margin-bottom: 4px;">

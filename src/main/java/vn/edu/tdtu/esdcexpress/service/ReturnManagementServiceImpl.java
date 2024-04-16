@@ -6,6 +6,10 @@ import vn.edu.tdtu.esdcexpress.model.Order;
 import vn.edu.tdtu.esdcexpress.model.ReturnManagement;
 import vn.edu.tdtu.esdcexpress.model.User;
 import vn.edu.tdtu.esdcexpress.repository.ReturnManagementRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ReturnManagementServiceImpl implements ReturnManagementService{
     @Autowired
@@ -21,7 +25,16 @@ public class ReturnManagementServiceImpl implements ReturnManagementService{
     }
 
     @Override
-    public Iterable<ReturnManagement> getReturnManagementByOrder(Order order) {
-        return returnManagementRepository.findByOrderId(order.getId());
+    public Iterable<ReturnManagement> getReturnManagementByOrder(Iterable<Order> orders) {
+        List<ReturnManagement> returnManagements = new ArrayList<>();
+        for(Order order: orders){
+            Iterable<ReturnManagement> foundReturnManagements = returnManagementRepository.findByOrderId(order.getId());
+            for(ReturnManagement returnManagement: foundReturnManagements) {
+                returnManagements.add(returnManagement);
+            }
+        }
+        return returnManagements;
     }
+
+
 }

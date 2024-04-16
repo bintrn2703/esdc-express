@@ -7,4 +7,5 @@ public interface OrderService {
     public Iterable<Order> getOrdersByUsername(User user);
     public Order findById(Long id);
     public Order save(Order order);
+    public Order getOrderById(Iterable<Order> orders, Long id);
 }

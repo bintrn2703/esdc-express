@@ -30,9 +30,9 @@ public class ReturnManagementController {
     public String returnManagement(Model model, HttpSession session) {
         String accountName = (String) session.getAttribute("accountName");
         User user = userService.getUserByName(accountName);
-        Order order = (Order) orderService.getOrdersByUsername(user);
+        Iterable<Order> orders = orderService.getOrdersByUsername(user);
         if(user != null) {
-            List<ReturnManagement> returnManagements = (List<ReturnManagement>) returnManagementService.getReturnManagementByOrder(order);
+            List<ReturnManagement> returnManagements = (List<ReturnManagement>) returnManagementService.getReturnManagementByOrder(orders);
             model.addAttribute("returnManagements", returnManagements);
             model.addAttribute("returnManagementsSize", returnManagements.size());
         }

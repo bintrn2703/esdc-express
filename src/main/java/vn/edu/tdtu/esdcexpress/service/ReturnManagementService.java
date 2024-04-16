@@ -7,5 +7,6 @@ import vn.edu.tdtu.esdcexpress.model.User;
 public interface ReturnManagementService {
     public ReturnManagement save(ReturnManagement returnManagement);
     public ReturnManagement findById(Long id);
-    public Iterable<ReturnManagement> getReturnManagementByOrder(Order order);
+    public Iterable<ReturnManagement> getReturnManagementByOrder(Iterable<Order> order);
+
 }

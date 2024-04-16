@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -127,5 +128,31 @@ public class HomeController {
 
         writer.flush();
         writer.close();
+    }
+
+    @GetMapping("/search")
+    public String searchOrderId(@RequestParam("orderId") String orderIdStr, HttpSession session) {
+        try {
+            Long orderId = Long.parseLong(orderIdStr);
+            String accountName = (String) session.getAttribute("accountName");
+            User user = userService.getUserByName(accountName);
+            Iterable<Order> orderList = orderService.getOrdersByUsername(user);
+            Order order = orderService.getOrderById(orderList, orderId);
+            if(order == null) {
+                session.setAttribute("orderNotFound", true);
+                return "index";
+            }
+            return "redirect:/order/" + order.getId();
+        } catch (NumberFormatException e) {
+            session.setAttribute("invalidOrderId", true);
+            return "index";
+        }
+    }
+
+    @GetMapping("/clear-session-attributes")
+    public ResponseEntity<Void> clearSessionAttributes(HttpSession session) {
+        session.removeAttribute("orderNotFound");
+        session.removeAttribute("invalidOrderId");
+        return ResponseEntity.ok().build();
     }
 }
