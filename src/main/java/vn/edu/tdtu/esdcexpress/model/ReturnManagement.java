@@ -12,7 +12,6 @@ public class ReturnManagement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;

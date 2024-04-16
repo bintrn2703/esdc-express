@@ -1,18 +1,19 @@
 package vn.edu.tdtu.esdcexpress.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import vn.edu.tdtu.esdcexpress.model.CreateOrderDto;
-import vn.edu.tdtu.esdcexpress.model.Finance;
-import vn.edu.tdtu.esdcexpress.model.Order;
-import vn.edu.tdtu.esdcexpress.model.User;
-import vn.edu.tdtu.esdcexpress.service.FinanceService;
-import vn.edu.tdtu.esdcexpress.service.OrderService;
-import vn.edu.tdtu.esdcexpress.service.UserService;
+import org.springframework.web.multipart.MultipartFile;
+import vn.edu.tdtu.esdcexpress.model.*;
+import vn.edu.tdtu.esdcexpress.service.*;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -186,7 +187,7 @@ public class OrderController {
     }
 
     @PostMapping("/return-order/{id}")
-    public String returnOrder(@PathVariable(value = "id") Long id ,HttpServletRequest request, @RequestParam("file-input") MultipartFile file, Model model) {
+    public String returnOrder(@PathVariable(value = "id") Long id , HttpServletRequest request, @RequestParam("file-input") MultipartFile file, Model model) {
         try {
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -202,10 +203,31 @@ public class OrderController {
             returnManagement.setOrder(order);
             returnManagementService.save(returnManagement);
 
+
+
         } catch (Exception e) {
             model.addAttribute("error", "Error while uploading image");
             return "redirect:/return-order/{id}";
         }
         return "redirect:/return-management";
     }
+
+    public String getImagePath(int id) {
+        String filePath = null;
+        String url = "jdbc:postgresql://35.202.14.32:5432/postgres";
+        String username = "postgres";
+        String password = "abc123";
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement("SELECT image FROM return_management WHERE id = ?")) {
+            String tempFilePath = "path/to/temp/image";
+            statement.setLong(1, id);
+            statement.executeUpdate();
+            filePath = tempFilePath;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return filePath;
+    }
+
+
 }
