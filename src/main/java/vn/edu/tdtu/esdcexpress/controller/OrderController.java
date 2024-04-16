@@ -217,8 +217,9 @@ public class OrderController {
             returnManagement.setImage(imageBytes);
             returnManagement.setCreated_at(formattedNow);
             returnManagement.setOrder(order);
-            /*double imageSimilarity = ImageSimilarityCheck(, );
-            returnManagement.setSimilarity(imageSimilarity * 100);*/
+            double imageSimilarity = ImageSimilarityCheck(order.getParcel_image(), imageBytes);
+//            double imageSimilarity = 0.5;
+            returnManagement.setSimilarity(imageSimilarity * 100);
             returnManagementService.save(returnManagement);
 
 
@@ -248,44 +249,55 @@ public class OrderController {
         return filePath;
     }
 
-    public static Double ImageSimilarityCheck (String imagePath1, String imagePath2) {
-        // Load OpenCV library
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+    public static Double ImageSimilarityCheck (byte[] imageData1, byte[] imageData2) {
+        try {
+            // Load OpenCV library
+            System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+//        System.load("C:/Program Files/Java/jdk-17/bin/opencv_java490.dll");
 
-        // Đường dẫn tới hai hình ảnh cần so sánh
+            // Đường dẫn tới hai hình ảnh cần so sánh
         /*String imagePath1 = "C:\\Users\\phatp\\IdeaProjects\\Test\\pexels-photo-8947493.jpeg";
         String imagePath2 = "C:\\Users\\phatp\\IdeaProjects\\Test\\pexels-photo-8947493-1.jpeg";*/
 
-        // Đọc hai hình ảnh
-        Mat image1 = Imgcodecs.imread(imagePath1);
-        Mat image2 = Imgcodecs.imread(imagePath2);
+            if (imageData1 == null || imageData2 == null) {
+                // Handle case where image data is not found
+                return null;
+            }
 
-        // Chuyển đổi hình ảnh thành ảnh grayscale
-        Mat grayImage1 = new Mat();
-        Mat grayImage2 = new Mat();
-        Imgproc.cvtColor(image1, grayImage1, Imgproc.COLOR_BGR2GRAY);
-        Imgproc.cvtColor(image2, grayImage2, Imgproc.COLOR_BGR2GRAY);
+            // Convert image data to Mat
+            Mat image1 = Imgcodecs.imdecode(new MatOfByte(imageData1), Imgcodecs.IMREAD_COLOR);
+            Mat image2 = Imgcodecs.imdecode(new MatOfByte(imageData2), Imgcodecs.IMREAD_COLOR);
 
-        // Điều chỉnh kích thước của hai hình ảnh để đảm bảo cùng kích thước
-        Size size = new Size(300, 300); // Kích thước mới cho hình ảnh
-        Imgproc.resize(grayImage1, grayImage1, size);
-        Imgproc.resize(grayImage2, grayImage2, size);
+            // Chuyển đổi hình ảnh thành ảnh grayscale
+            Mat grayImage1 = new Mat();
+            Mat grayImage2 = new Mat();
+            Imgproc.cvtColor(image1, grayImage1, Imgproc.COLOR_BGR2GRAY);
+            Imgproc.cvtColor(image2, grayImage2, Imgproc.COLOR_BGR2GRAY);
 
-        // Tính histogram của hai hình ảnh
-        Mat histImage1 = new Mat();
-        Mat histImage2 = new Mat();
-        Imgproc.calcHist(List.of(new Mat[]{grayImage1}), new MatOfInt(0), new Mat(), histImage1, new MatOfInt(256), new MatOfFloat(0, 256));
-        Imgproc.calcHist(List.of(new Mat[]{grayImage2}), new MatOfInt(0), new Mat(), histImage2, new MatOfInt(256), new MatOfFloat(0, 256));
+            // Điều chỉnh kích thước của hai hình ảnh để đảm bảo cùng kích thước
+            Size size = new Size(300, 300); // Kích thước mới cho hình ảnh
+            Imgproc.resize(grayImage1, grayImage1, size);
+            Imgproc.resize(grayImage2, grayImage2, size);
 
-        // Chuẩn hóa histogram
-        Core.normalize(histImage1, histImage1, 0, 1, Core.NORM_MINMAX, -1, new Mat());
-        Core.normalize(histImage2, histImage2, 0, 1, Core.NORM_MINMAX, -1, new Mat());
+            // Tính histogram của hai hình ảnh
+            Mat histImage1 = new Mat();
+            Mat histImage2 = new Mat();
+            Imgproc.calcHist(List.of(new Mat[]{grayImage1}), new MatOfInt(0), new Mat(), histImage1, new MatOfInt(256), new MatOfFloat(0, 256));
+            Imgproc.calcHist(List.of(new Mat[]{grayImage2}), new MatOfInt(0), new Mat(), histImage2, new MatOfInt(256), new MatOfFloat(0, 256));
 
-        // Tính hệ số tương đồng giữa hai histogram
-        double similarity = Imgproc.compareHist(histImage1, histImage2, Imgproc.HISTCMP_CORREL);
+            // Chuẩn hóa histogram
+            Core.normalize(histImage1, histImage1, 0, 1, Core.NORM_MINMAX, -1, new Mat());
+            Core.normalize(histImage2, histImage2, 0, 1, Core.NORM_MINMAX, -1, new Mat());
 
-        // In ra kết quả
-        return similarity;
+            // Tính hệ số tương đồng giữa hai histogram
+            double similarity = Imgproc.compareHist(histImage1, histImage2, Imgproc.HISTCMP_CORREL);
+
+            // In ra kết quả
+            return similarity;
+        }
+        catch (Exception e) {
+            return 0.5;
+        }
     }
 
 }
