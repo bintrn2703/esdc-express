@@ -22,7 +22,8 @@ public class EsdcExpressApplication {
     public ViewResolver viewResolver() {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setTemplateMode("HTML5");
-        templateResolver.setPrefix("views/");
+//        templateResolver.setPrefix("views/");
+        templateResolver.setPrefix("template/");
         templateResolver.setSuffix(".html");
 
         SpringTemplateEngine engine = new SpringTemplateEngine();
@@ -32,5 +33,7 @@ public class EsdcExpressApplication {
         viewResolver.setTemplateEngine(engine);
         return viewResolver;
     }
+
+
 
 }

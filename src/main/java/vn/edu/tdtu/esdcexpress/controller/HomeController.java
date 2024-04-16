@@ -41,6 +41,10 @@ public class HomeController {
 
         return "index";
     }
+    @GetMapping("/homepage")
+    public String homepage() {
+        return "homepage";
+    }
 
     @GetMapping("/custom-login")
     public String login() {

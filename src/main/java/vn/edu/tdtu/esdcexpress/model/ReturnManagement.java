@@ -18,12 +18,14 @@ public class ReturnManagement {
     private String message;
     private byte[] image;
     private String created_at;
+    private Double similarity;
 
-    public ReturnManagement(Order order, String message, byte[] image, String created_at) {
+    public ReturnManagement(Order order, String message, byte[] image, String created_at, Double similarity) {
         this.order = order;
         this.message = message;
         this.image = image;
         this.created_at = created_at;
+        this.similarity = similarity;
     }
 
 }

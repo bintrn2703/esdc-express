@@ -20,7 +20,9 @@ import java.util.List;
 
 @Controller
 public class ReturnManagementController {
+    @Autowired
     UserService userService;
+    @Autowired
     OrderService orderService;
     @Autowired
     ReturnManagementService returnManagementService;
@@ -40,18 +42,40 @@ public class ReturnManagementController {
     @GetMapping("/return-management/{id}")
     public String returnDetail(@PathVariable(value="id") Long id, Model model) {
         ReturnManagement returnDetail = returnManagementService.findById(id);
+        Order order = orderService.findById(returnDetail.getOrder().getId());
         model.addAttribute("returnDetail", returnDetail);
+        model.addAttribute("order",order);
         return "return-detail";
     }
 
+    @GetMapping("/img/order/{orderId}")
+    public ResponseEntity<byte[]> getImage1(@PathVariable(value="orderId") Long orderId) {
+        Order order = orderService.findById(orderId);
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(order.getParcel_image());
+
+    }
+
+    @GetMapping("/img/return/{returnId}")
+    public ResponseEntity<byte[]> getImage2(@PathVariable(value="returnId") Long returnId) {
+//        Order order = orderService.findById(orderId);
+        ReturnManagement returnDetail = returnManagementService.findById(returnId);
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(returnDetail.getImage());
+
+    }
+
+
     //test image
-    @GetMapping("/test-image")
-    public ResponseEntity<byte[]> getImage() {
-        ReturnManagement image = returnManagementService.findById(2L);
+    /*@GetMapping("/test-image/{id}")
+    public ResponseEntity<byte[]> getImage(@PathVariable(value="id") Long id) {
+        ReturnManagement image = returnManagementService.findById(id);
         return ResponseEntity.ok()
                 .contentType(MediaType.IMAGE_JPEG)
                 .body(image.getImage());
-    }
+    }*/
 
 
 }

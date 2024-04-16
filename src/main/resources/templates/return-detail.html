@@ -228,11 +228,13 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <picture><img alt="Photograph of a Smartphone " src="img/pexels-photo-8947493.jpeg"></picture>
+<!--                                            <picture><img alt="" th:src="@{''}"></picture>-->
+                                            <img th:src="@{'/img/order/{orderId}' (orderId=${order.id})}">
                                             <p>beforePicture.png</p>
                                         </td>
                                         <td>
-                                            <picture><img alt="Photograph of a Smartphone " src="img/pexels-photo-8947493-1.jpeg"></picture>
+<!--                                            <picture><img alt="" src="img/pexels-photo-8947493-1.jpeg"></picture>-->
+                                            <img th:src="@{'/img/return/{returnId}' (returnId=${returnDetail.id})}">
                                             <p>afterPicture.png</p>
                                         </td>
                                     </tr>
@@ -244,8 +246,16 @@
                                     <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"></path>
                                 </svg>&nbsp;Recompare</button></div>
                         <div class="d-flex">
-                            <p>AI Summary:&nbsp;</p>
-                            <p style="font-style: italic;">The item is exactly the same as the original, there are a few scratches on the box. Product is eligible for return.</p>
+                            <p>Order ID:&nbsp;</p>
+                            <p style="font-style: italic;" th:text="${returnDetail.getOrder().id}"></p>
+                        </div>
+                        <div class="d-flex">
+                            <p>Customer Message:&nbsp;</p>
+                            <p style="font-style: italic;" th:text="${returnDetail.getMessage()}"></p>
+                        </div>
+                        <div class="d-flex">
+                            <p>Image Similarity:&nbsp;</p>
+                            <p style="font-style: italic;" th:text="${returnDetail.getSimilarity()}"></p>
                         </div>
                         <div class="d-flex justify-content-center" style="margin-bottom: 0px;">
                             <div class="btn-group" role="group" style="margin-bottom: 16px;"><button class="btn btn-primary" type="button">Accept Return</button><button class="btn btn-danger" type="button">Decline Return</button></div>

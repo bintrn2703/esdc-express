@@ -30,9 +30,8 @@ public class CreateOrderDto {
     private String pickup_at;
     private String delivered_at;
     private String status;
-    private String parcel_image;
 
-    public CreateOrderDto(User user, String pickup_phone, String pickup_name, String pickup_address, String deliver_phone, String deliver_name, String deliver_address, String delivery_instruction, String parcel_name, float parcel_weight, String parcel_dimension, float parcel_value, int item_quantity, String allow_mutual_check, String cod, String collect_type, String shipping_service, String shipping_fee_payment, float shipping_fee, String create_at, String pickup_at, String delivered_at, String status, String parcel_image) {
+    public CreateOrderDto(User user, String pickup_phone, String pickup_name, String pickup_address, String deliver_phone, String deliver_name, String deliver_address, String delivery_instruction, String parcel_name, float parcel_weight, String parcel_dimension, float parcel_value, int item_quantity, String allow_mutual_check, String cod, String collect_type, String shipping_service, String shipping_fee_payment, float shipping_fee, String create_at, String pickup_at, String delivered_at, String status) {
         this.user = user;
         this.pickup_phone = pickup_phone;
         this.pickup_name = pickup_name;
@@ -56,6 +55,5 @@ public class CreateOrderDto {
         this.pickup_at = pickup_at;
         this.delivered_at = delivered_at;
         this.status = status;
-        this.parcel_image = parcel_image;
     }
 }

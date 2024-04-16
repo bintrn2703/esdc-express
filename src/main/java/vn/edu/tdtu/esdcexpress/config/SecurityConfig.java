@@ -37,7 +37,7 @@ public class SecurityConfig {
                 .csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable())
                 .userDetailsService(userDetailsService)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/custom-login","/register", "/logout").permitAll()
+                        .requestMatchers("/custom-login","/register", "/logout","/order/{id}","/homepage").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .anyRequest().authenticated()
 
