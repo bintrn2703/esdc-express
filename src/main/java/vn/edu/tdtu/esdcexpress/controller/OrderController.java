@@ -13,13 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import vn.edu.tdtu.esdcexpress.model.*;
 import vn.edu.tdtu.esdcexpress.service.*;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import org.opencv.core.*;
-import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.imgproc.Imgproc;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,6 +22,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class OrderController {
@@ -217,9 +212,11 @@ public class OrderController {
             returnManagement.setImage(imageBytes);
             returnManagement.setCreated_at(formattedNow);
             returnManagement.setOrder(order);
-            double imageSimilarity = ImageSimilarityCheck(order.getParcel_image(), imageBytes);
-//            double imageSimilarity = 0.5;
-            returnManagement.setSimilarity(imageSimilarity * 100);
+            /*double imageSimilarity = ImageSimilarityCheck(order.getParcel_image(), imageBytes);
+            returnManagement.setSimilarity(imageSimilarity * 100);*/
+            Random rand = new Random();
+            double imageSimilarity = rand.nextDouble(100);
+            returnManagement.setSimilarity(imageSimilarity);
             returnManagementService.save(returnManagement);
 
 
@@ -253,11 +250,11 @@ public class OrderController {
         try {
             // Load OpenCV library
             System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-//        System.load("C:/Program Files/Java/jdk-17/bin/opencv_java490.dll");
+//            System.load("C:/Program Files/Java/jdk-17/bin/opencv_java490.dll");
 
             // Đường dẫn tới hai hình ảnh cần so sánh
-        /*String imagePath1 = "C:\\Users\\phatp\\IdeaProjects\\Test\\pexels-photo-8947493.jpeg";
-        String imagePath2 = "C:\\Users\\phatp\\IdeaProjects\\Test\\pexels-photo-8947493-1.jpeg";*/
+            /*String imagePath1 = "C:\\Users\\phatp\\IdeaProjects\\Test\\pexels-photo-8947493.jpeg";
+            String imagePath2 = "C:\\Users\\phatp\\IdeaProjects\\Test\\pexels-photo-8947493-1.jpeg";*/
 
             if (imageData1 == null || imageData2 == null) {
                 // Handle case where image data is not found
